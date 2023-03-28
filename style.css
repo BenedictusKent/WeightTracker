@@ -40,7 +40,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 16px;
+    border-radius: 1rem;
     padding: 2rem;
 }
 
@@ -60,4 +60,31 @@ button {
 
 button:hover {
     transform: translateY(-5px);
+}
+
+footer {
+    background-color: var(--color-primary-100);
+    width: min(50%, 60rem);
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section {
+    padding: 1rem 2rem;
+}
+
+label,
+input {
+    font-size: 1rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 1000px) {
+    footer {
+        flex-direction: row;
+    }
 }

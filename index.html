@@ -23,12 +23,26 @@
     <body>
         <header>T R A K R</header>
         <main>
-            <!-- <div id="container"></div> -->
             <div>
                 <canvas id="myChart"></canvas>
             </div>
             <button>LOG WEIGHT</button>
         </main>
+        <footer>
+            <section>
+                <label for="calendar">Calendar</label>
+                <input
+                    type="date"
+                    id="calendar"
+                    name="calendar"
+                    value="2023-03-29"
+                />
+            </section>
+            <section>
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" name="weight" min="0" />
+            </section>
+        </footer>
         <!-- Link JS -->
         <script src="script.js"></script>
     </body>
