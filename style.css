@@ -71,6 +71,9 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* visibility: hidden; */
+    height: 0;
+    overflow: hidden;
 }
 
 section {
@@ -83,8 +86,23 @@ input {
     margin: 0 auto;
 }
 
-@media (min-width: 1000px) {
+button.close {
+    font-size: 1rem;
+    margin: 1rem auto;
+}
+
+.show {
+    height: auto;
+}
+
+@media (min-width: 1400px) {
     footer {
         flex-direction: row;
+    }
+
+    button.close {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem;
+        margin: 1rem auto;
     }
 }

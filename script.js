@@ -1,3 +1,9 @@
+const logButton = document.querySelector("button");
+logButton.addEventListener("click", function () {
+    const footer = document.querySelector("footer");
+    footer.classList.toggle("show");
+});
+
 const getWeekDate = function () {
     const dates = [];
     const today = new Date();
