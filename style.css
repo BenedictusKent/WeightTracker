@@ -86,7 +86,7 @@ input {
     margin: 0 auto;
 }
 
-button.close {
+button.submit {
     font-size: 1rem;
     margin: 1rem auto;
 }
@@ -100,7 +100,7 @@ button.close {
         flex-direction: row;
     }
 
-    button.close {
+    button.submit {
         font-size: 1rem;
         padding: 0.5rem 1.5rem;
         margin: 1rem auto;
