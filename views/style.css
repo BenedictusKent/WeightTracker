@@ -62,7 +62,7 @@ button:hover {
     transform: translateY(-5px);
 }
 
-footer {
+form {
     background-color: var(--color-primary-100);
     width: min(50%, 60rem);
     border-radius: 0.5rem;
@@ -96,7 +96,7 @@ button.submit {
 }
 
 @media (min-width: 1400px) {
-    footer {
+    form {
         flex-direction: row;
     }
 

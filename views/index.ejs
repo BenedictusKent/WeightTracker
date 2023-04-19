@@ -28,7 +28,7 @@
             </div>
             <button>LOG WEIGHT</button>
         </main>
-        <footer>
+        <form action="/" method="POST">
             <section>
                 <label for="calendar">Calendar</label>
                 <input
@@ -40,10 +40,16 @@
             </section>
             <section>
                 <label for="weight">Weight (kg)</label>
-                <input type="number" id="weight" name="weight" min="0" />
+                <input
+                    type="number"
+                    id="weight"
+                    name="weight"
+                    min="0"
+                    required
+                />
             </section>
             <button class="submit">Submit</button>
-        </footer>
+        </form>
         <!-- Link JS -->
         <script src="script.js"></script>
     </body>

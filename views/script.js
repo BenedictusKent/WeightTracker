@@ -1,12 +1,12 @@
-// Change button text on click & open footer window
+// Change button text on click & open form window
 const logButton = document.querySelector("button");
 let isClicked = false;
 logButton.addEventListener("click", function () {
     isClicked = !isClicked;
-    const footer = document.querySelector("footer");
+    const form = document.querySelector("form");
     if (isClicked) logButton.textContent = "CLOSE WINDOW";
     else logButton.textContent = "LOG WEIGHT";
-    footer.classList.toggle("show");
+    form.classList.toggle("show");
 });
 
 // Change footer date to today's date
@@ -18,14 +18,6 @@ const changeFooterDate = function () {
     document.getElementById("calendar").value = dateFormat;
 };
 changeFooterDate();
-
-// Get form data
-const submitButton = document.querySelector(".submit");
-submitButton.addEventListener("click", function () {
-    const dateInput = document.getElementById("calendar");
-    const weightInput = document.getElementById("weight");
-    // TODO: Insert data to DB
-});
 
 // Output 7-day dates counting back from today
 const getWeekDate = function () {
