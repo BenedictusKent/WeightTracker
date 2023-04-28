@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs");
 const express = require("express");
 const mysql = require("mysql2");
@@ -42,10 +44,41 @@ connection.connect((err) => {
     }
 });
 
+// Home page
 app.get("/", (req, res) => {
     res.render("index");
 });
 
+// Get table data
+app.get("/data", (req, res) => {
+    const dateArray = [];
+    const weightArray = [];
+
+    const selectQuery = `SELECT * FROM weight_data`;
+    connection.query(selectQuery, (err, result) => {
+        if (err) throw err;
+        // Loop through all table data
+        for (let i = 0; i < result.length; i++) {
+            // Change {2023-03-31T16:00:00.000Z} -> {2023-04-01}
+            const date = new Date(result[i]["date"]);
+            const dateString = `${date.getFullYear()}-${(date.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}-${date
+                .getDate()
+                .toString()
+                .padStart(2, "0")}`;
+            dateArray.push(dateString);
+            weightArray.push(result[i]["weight"]);
+        }
+        const data = {
+            dates: dateArray,
+            weight: weightArray,
+        };
+        res.json(data);
+    });
+});
+
+// Insert or update data
 app.post("/", (req, res) => {
     const { calendar, weight } = req.body;
 
@@ -75,8 +108,8 @@ app.post("/", (req, res) => {
         // Loop through all table data
         for (let i = 0; i < result.length; i++) {
             // Change {2023-03-31T16:00:00.000Z} -> {2023-04-01}
-            var date = new Date(result[i]["date"]);
-            var dateString = `${date.getFullYear()}-${(date.getMonth() + 1)
+            const date = new Date(result[i]["date"]);
+            const dateString = `${date.getFullYear()}-${(date.getMonth() + 1)
                 .toString()
                 .padStart(2, "0")}-${date
                 .getDate()

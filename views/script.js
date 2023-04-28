@@ -20,42 +20,54 @@ const changeFooterDate = function () {
 changeFooterDate();
 
 // Output 7-day dates counting back from today
-const getWeekDate = function () {
-    const today = new Date();
+const getWeekDate = function (date_data) {
+    // const today = new Date();
+    // const dates = [];
+    // for (let i = 0; i < 7; i++) {
+    //     text = `${today.getMonth() + 1}/${today.getDate()}`;
+    //     dates.splice(0, 0, text);
+    //     today.setDate(today.getDate() - 1);
+    // }
+    // return dates;
+
     const dates = [];
-    for (let i = 0; i < 7; i++) {
-        text = `${today.getMonth() + 1}/${today.getDate()}`;
-        dates.splice(0, 0, text);
-        today.setDate(today.getDate() - 1);
+    for (let i = 0; i < date_data.length; i++) {
+        const day = new Date(date_data[i]);
+        text = `${day.getMonth() + 1}/${day.getDate()}`;
+        dates.push(text);
     }
     return dates;
 };
 
-// Chart.js
-const ctx = document.getElementById("myChart");
+fetch("/data")
+    .then((response) => response.json())
+    .then((data) => {
+        // Chart.js
+        const ctx = document.getElementById("myChart");
 
-Chart.defaults.font.size = 16;
-Chart.defaults.font.family = "Helvetica";
-Chart.defaults.color = "#000";
+        Chart.defaults.font.size = 16;
+        Chart.defaults.font.family = "Helvetica";
+        Chart.defaults.color = "#000";
 
-new Chart(ctx, {
-    type: "line",
-    data: {
-        labels: getWeekDate(),
-        datasets: [
-            {
-                label: "Weight in kg",
-                data: [78.9, 78.25, 77.65, 78.8, 78.1, 79, 78.3],
-                borderWidth: 2,
-                borderColor: "#3ebc5a",
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: getWeekDate(data.dates),
+                datasets: [
+                    {
+                        label: "Weight in kg",
+                        data: data.weight,
+                        borderWidth: 2,
+                        borderColor: "#3ebc5a",
+                    },
+                ],
             },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: false,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                    },
+                },
             },
-        },
-    },
-});
+        });
+    });
