@@ -65,6 +65,14 @@ No free PaaS that can deploy Node.js with MySQL
 
 3. Communication with MySQL
 
+4. Managing package with npm
+
+```bash
+npm install
+npm install -g nodemon
+nodemon app
+```
+
 ### Continued development
 
 The hardest part of this project is incorporating Node.js.
